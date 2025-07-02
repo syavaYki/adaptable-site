@@ -1,0 +1,17 @@
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: rgba(182, 179, 179, 0.2);
+  border: 2px solid transparent;
+  border-radius: 15px;
+  right: 5px;
+  padding: 30px;
+  color: #636163 !important;
+
+  &:hover {
+    background-color: rgba(182, 179, 179, 0.55);
+  }
+}
+
+.swiper-slide {
+  width: auto;
+}

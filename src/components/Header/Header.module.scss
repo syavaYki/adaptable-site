@@ -1,0 +1,40 @@
+@use 'bulma/sass/utilities/mixins';
+@import '../../styles/main.scss';
+
+.full_page {
+  height: 100%;
+}
+
+.custom_hover {
+  @include hover;
+}
+
+.header_txt {
+  font-size: 1rem;
+  font-weight: 500;
+  padding-block: 0;
+  height: 100%;
+}
+
+.logo_image {
+  max-height: 4rem;
+}
+
+.container_count {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--c-white);
+  border-radius: 50%;
+  background-color: red;
+  right: 0%;
+  top: 0%;
+}
+
+.count {
+  font-size: 0.8rem;
+  font-weight: 300;
+}

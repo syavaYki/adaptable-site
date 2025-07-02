@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "types": [
+    "@types/babel__core",
+    "@types/babel__generator",
+    "@types/babel__template",
+    "@types/babel__traverse",
+    "@types/body-parser",
+    "@types/bonjour",
+    "@types/estree",
+    "@types/express",
+    "@types/express-serve-static-core",
+    "@types/graceful-fs",
+    "@types/http-errors",
+    "@types/http-proxy",
+    "@types/istanbul-lib-coverage",
+    "@types/istanbul-lib-report",
+    "@types/json-schema",
+    "@types/parse-json",
+    "@types/q",
+    "@types/qs",
+    "@types/range-parser",
+    "@types/send",
+    "@types/serve-static",
+    "@types/sockjs",
+    "@types/stack-utils",
+    "@types/trusted-types"
+  ],
+  "include": [
+    "src"
+  ]
+}

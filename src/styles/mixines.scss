@@ -1,0 +1,16 @@
+@mixin hover($property: transform, $toValue: scale(1.05)) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    color: var(--c-primary);
+    #{$property}: $toValue;
+  }
+}
+
+@mixin hoverNoBG($property: transform, $toValue: scale(1.05)) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}

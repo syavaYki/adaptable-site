@@ -1,0 +1,24 @@
+@use 'bulma/sass/utilities/mixins';
+@import '../../styles/main.scss';
+.container {
+  border-radius: 15px;
+}
+
+.button {
+  max-height: 80px;
+}
+.logo_decor {
+  max-height: 50rem;
+}
+
+.social_links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer_hr {
+  height: 1px;
+  border: none;
+  opacity: 0.5;
+  margin: 0.5rem;
+}

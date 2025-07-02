@@ -1,0 +1,22 @@
+// Set your brand colors
+
+// $green: #28422a;
+// $red: rgb(155, 21, 21);
+$plastMainColor: #726c78;
+$plastLightColor: #f9eae8;
+
+// Path to Bulma's sass folder
+@use 'bulma/sass' with (
+  $family-primary: '"Nunito", sans-serif',
+  // $grey-dark: $brown,
+  // $grey-light: $beige-light,
+  $primary: $plastMainColor,
+  $light: $plastLightColor,
+  $link: $plastLightColor,
+  // $control-border-width: 2px,
+  // $input-shadow: none,
+   // $scheme-main: rgb(70, 73, 106)
+);
+
+// Import the Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');

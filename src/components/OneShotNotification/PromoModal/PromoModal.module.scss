@@ -1,0 +1,72 @@
+$modal-background-color: #e32f6e;
+$modal-text-color: white;
+$button-background-color: #2c3e50;
+$legal-text-color: #fadadd;
+
+.promotional_modal {
+  .modal_content {
+    background-color: $modal-background-color;
+    color: $modal-text-color;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    max-width: 520px;
+
+    .box {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  .modal_close {
+    filter: invert(1);
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: $modal-text-color;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    margin: 0 auto 1.5rem auto;
+    max-width: 400px;
+  }
+
+  &__form_group {
+    justify-content: center;
+  }
+
+  &__input_control {
+    max-width: 300px;
+  }
+
+  &__submit_button {
+    background-color: $button-background-color;
+    font-weight: bold;
+    color: white;
+    border-color: transparent;
+
+    &:hover {
+      background-color: lighten($button-background-color, 10%);
+    }
+  }
+
+  &__legal_text {
+    font-size: 0.75rem;
+    color: $legal-text-color;
+    margin-top: 1.5rem;
+  }
+
+  &__legal_link {
+    color: $modal-text-color;
+    text-decoration: underline;
+
+    &:hover {
+      color: lighten($modal-text-color, 15%);
+    }
+  }
+}
