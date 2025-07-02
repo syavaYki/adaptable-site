@@ -57,7 +57,6 @@ export const Header = () => {
           className={classNames('is-flex is-align-items-center', {
             [style.custom_hover]: !mobileMenuVisible,
           })}
-          href="/"
           onClick={() => onLinkClick('/')}
         >
           <img

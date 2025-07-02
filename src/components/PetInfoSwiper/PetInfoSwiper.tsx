@@ -21,9 +21,9 @@ export const PetInfoSwiper: React.FC<Props> = ({ images, petType }) => {
   const imagesToShow = useMemo(() => {
     if (images.length === 0) {
       if (petType === 'dog') {
-        return ['/assets/dog-img-placeholder.png'];
+        return ['assets/dog-img-placeholder.png'];
       } else if (petType === 'cat') {
-        return ['/assets/cat-img-placeholder.png'];
+        return ['assets/cat-img-placeholder.png'];
       } else {
         return ['https://placehold.co/400x600?text=Comming+Soon'];
       }

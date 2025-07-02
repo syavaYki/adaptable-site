@@ -29,9 +29,9 @@ export const CatalogCard: React.FC<Props> = ({ petData }) => {
   useEffect(() => {
     if (petData.images.length < 1) {
       if (petData.pet_type.toLocaleLowerCase() === 'dog') {
-        setPicture('/assets/dog-img-placeholder.png');
+        setPicture('assets/dog-img-placeholder.png');
       } else if (petData.pet_type.toLocaleLowerCase() === 'cat') {
-        setPicture('/assets/cat-img-placeholder.png');
+        setPicture('assets/cat-img-placeholder.png');
       } else {
         setPicture('https://placehold.co/400x600?text=Comming+Soon');
       }
