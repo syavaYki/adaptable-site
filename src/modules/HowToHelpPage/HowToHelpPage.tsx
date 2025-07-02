@@ -16,7 +16,7 @@ export const HowToHelpPage = () => {
           <Box>
             <figure className="image is-2by1 mb-5">
               <img
-                src="\assets\how-to-help-banner.png"
+                src="assets\how-to-help-banner.png"
                 alt="A banner showing happy pets"
                 style={{ borderRadius: '8px' }}
               />
@@ -75,7 +75,7 @@ export const HowToHelpPage = () => {
                   <div className="is-flex is-justify-content-center">
                     <figure className="image is-128x128  mb-5">
                       <img
-                        src="\assets\donation-qr-code.png"
+                        src="assets\donation-qr-code.png"
                         alt="A banner showing happy pets"
                       />
                     </figure>
