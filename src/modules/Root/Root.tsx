@@ -1,7 +1,8 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
+  HashRouter as Router,
   Navigate,
   Route,
   Routes,
