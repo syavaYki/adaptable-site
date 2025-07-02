@@ -10,7 +10,7 @@ export const HomeBanner2 = () => {
           <Columns.Column size={6}>
             <figure className="image  mb-5">
               <img
-                src="%PUBLIC_URL%\assets\how-to-help-banner-sqr.png"
+                src="assets\how-to-help-banner-sqr.png"
                 alt="A banner showing happy pets"
                 style={{
                   borderRadius: '38px',
