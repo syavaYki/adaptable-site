@@ -21,13 +21,13 @@ export const getUserMe = (): Promise<AxiosResponse> => {
 };
 
 export const submitAdotptionForm = (formData: AdoptionFormData) => {
-  return api.post(`api/v1/users/adoptionForm/`, {
+  return api.post(`api/v1/users/adoption/`, {
     formData,
   });
 };
 
 export const submitAppointmentForm = (formData: AppointmentFormData) => {
-  return api.post(`api/v1/users/appointmentForm/`, {
+  return api.post(`api/v1/users/appointment/`, {
     formData,
   });
 };
