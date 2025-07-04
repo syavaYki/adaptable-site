@@ -9,6 +9,7 @@ import * as FavoriteAction from '../../features/favorites';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { updateFavotitesPetsApi } from '../../api/pets';
+import { textBeautifier } from '../../utils/helperFormater';
 
 interface Props {
   petData: Pet;
@@ -61,11 +62,11 @@ export const CatalogCard: React.FC<Props> = ({ petData }) => {
           pt={3}
           mb={1}
         >
-          {petData.name}
+          {textBeautifier(petData.name)}
         </Heading>
 
         <div>
-          <p>Breed: {petData.breed}</p>
+          <p>Breed: {textBeautifier(petData.breed)}</p>
           <p>Age: {petData.age}</p>
         </div>
       </div>

@@ -174,9 +174,7 @@ export const PetInfoPage = () => {
             <Content>
               <div className="is-flex is-justify-content-space-between is-align-items-center">
                 <div>
-                  <Heading size={1}>
-                    {pet.name.charAt(0).toUpperCase() + pet.name.slice(1)}
-                  </Heading>
+                  <Heading size={1}>{textBeautifier(pet.name)}</Heading>
 
                   <Heading
                     subtitle
