@@ -53,8 +53,8 @@ export const Breadcrumbs = () => {
                   style.custom_hover,
                 )}
               >
-                {locationArr[locationArr.length - 2].toLocaleLowerCase() ===
-                  'pets' && locationArr.length - 1 === index
+                {locationArr[locationArr.length - 2] === 'Pets' &&
+                locationArr.length - 1 === index
                   ? textBeautifier(
                       pets.find(pet => pet.id === parseInt(crumbName))?.name ||
                         'Pet',

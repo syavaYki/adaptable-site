@@ -118,6 +118,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
                           className="input"
                           name="petId"
                           value={formData.petId}
+                          readOnly
                         />
                       </div>
                     </div>
@@ -131,6 +132,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
                           className="input"
                           name="userId"
                           value={formData.userId}
+                          readOnly
                         />
                       </div>
                     </div>

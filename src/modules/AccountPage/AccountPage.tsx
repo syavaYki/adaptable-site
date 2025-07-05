@@ -15,6 +15,9 @@ import { User } from '../../types/User';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../features/authentication';
+import { Appointment } from '../../types/Appointment';
+import { AppointmentAccountList } from '../../components/AppointmentAccountList/AppointmentAccountList';
+import { getAllAppointments } from '../../api/appointment';
 
 export const AccountPage = () => {
   const [loading, setLoading] = useState(false);
@@ -54,6 +57,8 @@ export const AccountPage = () => {
       .finally(() => {
         setLoading(false);
       });
+
+    setLoading(true);
   }, []);
 
   return (
@@ -124,6 +129,15 @@ export const AccountPage = () => {
                   )}
                 </div>
               </Content>
+            </Box>
+          </Columns.Column>
+
+          <Columns.Column>
+            <Box>
+              <Heading>Your appointments:</Heading>
+              {loading && <ModalLoader />}
+
+              <AppointmentAccountList />
             </Box>
           </Columns.Column>
         </Columns>
