@@ -12,8 +12,11 @@ import { Button, Heading } from 'react-bulma-components';
 import { AppointmentModal } from '../AppointmentModal';
 import { ModalChoice } from '../ModalChoice';
 import { ModalSuccess } from '../ModalSuccess';
+import { useAppSelector } from '../../app/hooks';
 
 export const AppointmentAccountList: React.FC = () => {
+  const { loggedIn } = useAppSelector(state => state.auth);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -35,7 +38,9 @@ export const AppointmentAccountList: React.FC = () => {
     getAllAppointments()
       .then(res => {
         if (res?.data) {
-          setAppointments(res.data);
+          setAppointments(
+            res.data.filter((ad: Appointment) => ad.email === loggedIn?.email),
+          );
         }
       })
       .catch((e: AxiosError) => {
@@ -116,6 +121,7 @@ export const AppointmentAccountList: React.FC = () => {
           </Button>
         </div>
       )}
+
       <ModalError
         isActive={!!error}
         title="Error"

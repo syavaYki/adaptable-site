@@ -6,6 +6,7 @@ import {
   submitAppointmentForm,
 } from '../../api/appointment';
 import { AxiosError } from 'axios';
+import { useAppSelector } from '../../app/hooks';
 
 type Props = {
   isOpen: boolean;
@@ -31,6 +32,7 @@ export const AppointmentModal: React.FC<Props> = ({
   curData,
   isEdit = false,
 }) => {
+  const { loggedIn } = useAppSelector(state => state.auth);
   const [formData, setFormData] = useState<AppointmentFormData>(initialForm);
   const [error, setError] = useState('');
 
@@ -45,6 +47,14 @@ export const AppointmentModal: React.FC<Props> = ({
 
     if (isEdit && curData) {
       setFormData(curData);
+    }
+
+    if (loggedIn) {
+      setFormData(prev => ({
+        ...prev,
+        email: loggedIn.email,
+        name: loggedIn.first_name + ' ' + loggedIn.last_name,
+      }));
     }
   }, [isOpen, curData, isEdit]);
 
@@ -96,6 +106,7 @@ export const AppointmentModal: React.FC<Props> = ({
         }
       });
   };
+
   const handleAppointmentEdit = (formData: AppointmentFormData): void => {
     editAppointmentForm(formData)
       .then(res => {
@@ -154,7 +165,6 @@ export const AppointmentModal: React.FC<Props> = ({
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    disabled={isEdit}
                     ref={nameInputRef}
                   />
                 </div>

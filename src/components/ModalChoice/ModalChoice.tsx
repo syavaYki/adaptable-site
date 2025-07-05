@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bulma-components';
 
 type Props = {
   title: string;
@@ -42,20 +43,24 @@ export const ModalChoice: React.FC<Props> = ({
         <section className="modal-card-body py-3 is-multiline">{body}</section>
         <footer className="modal-card-foot is-flex-direction-row-reverse py-3">
           <div className="buttons">
-            <button
+            <Button
+              rounded
+              color={'danger'}
+              colorVariant={'light'}
               style={{ minWidth: '100px' }}
-              className="button has-background-danger is-rounded"
               onClick={() => handleClose(true)}
             >
-              Так
-            </button>
-            <button
+              Yes
+            </Button>
+            <Button
+              rounded
+              color={'success'}
+              colorVariant={'light'}
               style={{ minWidth: '100px' }}
-              className="button has-background-success is-rounded"
               onClick={() => handleClose(false)}
             >
-              Ні
-            </button>
+              No
+            </Button>
           </div>
         </footer>
       </div>

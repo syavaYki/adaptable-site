@@ -35,11 +35,7 @@ import { updateFavotitesPetsApi } from '../../api/pets';
 import { PetInfoSwiper } from '../../components/PetInfoSwiper';
 import { ModalSuccess } from '../../components/ModalSuccess';
 import { PetAdoptionFormModal } from '../../components/PetAdoptionFormModal';
-import { AdoptionFormData } from '../../types/AdoptionFormData';
-import { submitAdotptionForm } from '../../api/users';
-import { AppointmentFormData } from '../../types/AppointmentFormData';
 import { textBeautifier } from '../../utils/helperFormater';
-import { submitAppointmentForm } from '../../api/appointment';
 
 export const PetInfoPage = () => {
   const { favorites } = useAppSelector(state => state.favorite);
@@ -85,24 +81,10 @@ export const PetInfoPage = () => {
     );
   };
 
-  const handleAdoptionFormSubmit = (formData: AdoptionFormData) => {
-    setLoading(true);
-
-    submitAdotptionForm(formData)
-      .then(res => {
-        if (res?.status === 400) {
-          setSuccess('Your form was submited, some will contact you shortly.');
-        } else {
-          throw new Error('uknown error');
-        }
-      })
-      .catch((e: AxiosError) => {
-        setError(`Failed to submit adoption form: ${e.message}`);
-      })
-      .finally(() => {
-        setLoading(false);
-        setIsAdoptionFormModalOpen(false);
-      });
+  const handleAdoptionFormSubmitSuccess = () => {
+    setSuccess(
+      'Appointment request submitted, someone will contact you to confirm appoitment.',
+    );
   };
 
   if (!pet) {
@@ -130,8 +112,8 @@ export const PetInfoPage = () => {
       <PetAdoptionFormModal
         petId={pet.id}
         isActive={isAdoptionFormModalOpen}
-        onSubmit={handleAdoptionFormSubmit}
         onClose={() => setIsAdoptionFormModalOpen(false)}
+        onSuccess={handleAdoptionFormSubmitSuccess}
       />
 
       <AppointmentModal
