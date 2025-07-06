@@ -109,13 +109,13 @@ export const Header = () => {
               arrowless
               className="p-0"
             >
-              <Heading size={4}>Home</Heading>
+              <Heading size={5}>Home</Heading>
             </Navbar.Link>
           </Navbar.Item>
 
           <Navbar.Item hoverable>
             <Navbar.Link onClick={() => onLinkClick('/catalog')}>
-              <Heading size={4}>Find Friend</Heading>
+              <Heading size={5}>Find Friend</Heading>
             </Navbar.Link>
 
             <Navbar.Dropdown>
@@ -125,7 +125,7 @@ export const Header = () => {
                 }
               >
                 <Navbar.Link>
-                  <Heading size={5}>Cat</Heading>
+                  <Heading size={6}>Cat</Heading>
                 </Navbar.Link>
               </Navbar.Item>
 
@@ -135,7 +135,7 @@ export const Header = () => {
                 }
               >
                 <Navbar.Link>
-                  <Heading size={5}>Dog</Heading>
+                  <Heading size={6}>Dog</Heading>
                 </Navbar.Link>
               </Navbar.Item>
 
@@ -143,7 +143,7 @@ export const Header = () => {
                 onClick={() => onLinkClick(`/${VALID_ROUTES.CATALOG}`)}
               >
                 <Navbar.Link>
-                  <Heading size={5}>All Friends</Heading>
+                  <Heading size={6}>All Friends</Heading>
                 </Navbar.Link>
               </Navbar.Item>
             </Navbar.Dropdown>
@@ -157,7 +157,7 @@ export const Header = () => {
               arrowless
               className="p-0"
             >
-              <Heading size={4}>How To Help</Heading>
+              <Heading size={5}>How To Help</Heading>
             </Navbar.Link>
           </Navbar.Item>
 
@@ -169,7 +169,7 @@ export const Header = () => {
               arrowless
               className="p-0"
             >
-              <Heading size={4}>Partner With Us</Heading>
+              <Heading size={5}>Partner With Us</Heading>
             </Navbar.Link>
           </Navbar.Item>
         </Navbar.Container>
@@ -213,7 +213,7 @@ export const Header = () => {
               </Navbar.Link>
             ) : (
               <Navbar.Link className="pl-0">
-                <Heading size={4}>Favorite</Heading>
+                <Heading size={5}>Favorite</Heading>
               </Navbar.Link>
             )}
           </Navbar.Item>

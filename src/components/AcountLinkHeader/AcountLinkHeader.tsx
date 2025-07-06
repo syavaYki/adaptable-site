@@ -56,13 +56,13 @@ export const AcountLinkHeader: React.FC<Props> = ({ onLinkClick }) => {
             <Navbar.Dropdown right>
               <Navbar.Item onClick={() => naviagate('/account')}>
                 <Navbar.Link arrowless>
-                  <Heading size={5}>Account</Heading>
+                  <Heading size={6}>Account</Heading>
                 </Navbar.Link>
               </Navbar.Item>
 
               <Navbar.Item onClick={handleLogout}>
                 <Navbar.Link arrowless>
-                  <Heading size={5}>Logout</Heading>
+                  <Heading size={6}>Logout</Heading>
                 </Navbar.Link>
               </Navbar.Item>
             </Navbar.Dropdown>
@@ -86,7 +86,7 @@ export const AcountLinkHeader: React.FC<Props> = ({ onLinkClick }) => {
               onClick={handleLogout}
               arrowless
             >
-              <Heading size={4}>Logout</Heading>
+              <Heading size={5}>Logout</Heading>
             </Navbar.Link>
           </>
         )}
@@ -127,13 +127,13 @@ export const AcountLinkHeader: React.FC<Props> = ({ onLinkClick }) => {
           <Navbar.Dropdown right>
             <Navbar.Item onClick={() => naviagate('/login')}>
               <Navbar.Link arrowless>
-                <Heading size={5}>Login</Heading>
+                <Heading size={6}>Login</Heading>
               </Navbar.Link>
             </Navbar.Item>
 
             <Navbar.Item onClick={() => naviagate('/register')}>
               <Navbar.Link arrowless>
-                <Heading size={5}>Register</Heading>
+                <Heading size={6}>Register</Heading>
               </Navbar.Link>
             </Navbar.Item>
           </Navbar.Dropdown>
@@ -145,7 +145,7 @@ export const AcountLinkHeader: React.FC<Props> = ({ onLinkClick }) => {
             className="pl-0"
             onClick={() => onLinkClick('/login')}
           >
-            <Heading size={4}>Login</Heading>
+            <Heading size={5}>Login</Heading>
           </Navbar.Link>
 
           <Navbar.Link
@@ -153,7 +153,7 @@ export const AcountLinkHeader: React.FC<Props> = ({ onLinkClick }) => {
             onClick={() => onLinkClick('/register')}
             className="pl-0"
           >
-            <Heading size={4}>Register</Heading>
+            <Heading size={5}>Register</Heading>
           </Navbar.Link>
         </>
       )}
