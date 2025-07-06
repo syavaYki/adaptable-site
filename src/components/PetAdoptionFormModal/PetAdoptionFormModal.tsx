@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { AdoptionFormData } from '../../types/AdoptionFormData';
+import { editAdoptionForm, submitAdoptionForm } from '../../api/adoptionForms';
+import { AxiosError } from 'axios';
 
 const getTodayDate = () => {
   const today = new Date();
@@ -13,43 +15,56 @@ const getTodayDate = () => {
 type Props = {
   petId: number;
   isActive: boolean;
-  onSubmit: (formData: AdoptionFormData) => void;
   onClose: () => void;
+  onSuccess?: () => void;
+  isEdit?: boolean;
+  curData?: AdoptionFormData;
 };
+
 export const PetAdoptionFormModal: React.FC<Props> = ({
   petId,
   isActive,
-  onSubmit,
   onClose,
+  onSuccess,
+  curData,
+  isEdit = false,
 }) => {
   const { loggedIn } = useAppSelector(state => state.auth);
-  const initialFormData: AdoptionFormData = useMemo(() => {
-    return {
-      applicationDate: getTodayDate(),
-      userId: loggedIn?.id ? loggedIn.id : null,
-      petId: petId,
-      firstName: loggedIn?.first_name ? loggedIn.first_name : '',
-      lastName: loggedIn?.last_name ? loggedIn.last_name : '',
-      address: '',
-      phone: '',
-      email: loggedIn?.email ? loggedIn.email : '',
-      occupation: '',
-      employerName: '',
-      employerPhone: '',
-      livingSituation: 'own',
-      householdSetting: 'suburban',
-      householdMembers: '',
-      fencedYard: 'yes',
-      hoursAlone: 0,
-    };
+  const [error, setError] = useState('');
+
+  const initialForm: AdoptionFormData = useMemo(() => {
+    if (isEdit && curData) {
+      return curData;
+    } else {
+      return {
+        petId: petId,
+        firstName: loggedIn?.first_name ? loggedIn.first_name : '',
+        lastName: loggedIn?.last_name ? loggedIn.last_name : '',
+        address: '',
+        phone: '',
+        email: loggedIn?.email ? loggedIn.email : '',
+        occupation: '',
+        employerName: '',
+        employerPhone: '',
+        livingSituation: 'own',
+        householdSetting: 'suburban',
+        householdMembers: '',
+        fencedYard: 'yes',
+        hoursAlone: 0,
+      };
+    }
   }, [getTodayDate, loggedIn]);
 
   const [isModalOpen, setIsModalOpen] = useState(isActive);
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState(initialForm);
 
   useEffect(() => {
     setIsModalOpen(isActive);
-  }, [isActive]);
+
+    if (isEdit && curData) {
+      setFormData(curData);
+    }
+  }, [isActive, curData, isEdit]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -62,9 +77,65 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsModalOpen(false);
-    setFormData(initialFormData);
-    onSubmit(formData);
+    if (isEdit) {
+      handleAdoptionEdit(formData);
+      return;
+    } else {
+      handleAdoptionSubmit(formData);
+    }
+  };
+
+  const handleSuccesClosing = () => {
+    setFormData(initialForm);
+    setError('');
+    if (onSuccess) {
+      onSuccess();
+    }
+    onClose();
+  };
+
+  const handleCancelClosing = () => {
+    setFormData(initialForm);
+    setError('');
+    onClose();
+  };
+
+  const handleAdoptionSubmit = (formData: AdoptionFormData): void => {
+    submitAdoptionForm(formData)
+      .then(res => {
+        if (res?.status === 201) {
+          handleSuccesClosing();
+        } else {
+          throw new Error('uknown error');
+        }
+      })
+      .catch((e: AxiosError) => {
+        if (e?.response?.data) {
+          const erros = Object.values(e.response.data).join('\n');
+          setError(`Failed to submit adotion form: ${erros}`);
+        } else {
+          setError(`Failed to submit adoption form: ${e.message}`);
+        }
+      });
+  };
+
+  const handleAdoptionEdit = (formData: AdoptionFormData): void => {
+    editAdoptionForm(formData)
+      .then(res => {
+        if (res?.status === 200) {
+          handleSuccesClosing();
+        } else {
+          throw new Error('uknown error');
+        }
+      })
+      .catch((e: AxiosError) => {
+        if (e?.response?.data) {
+          const erros = Object.values(e.response.data).join('\n');
+          setError(`Failed to edit adoption form: ${erros}`);
+        } else {
+          setError(`Failed to edit adoption form: ${e.message}`);
+        }
+      });
   };
 
   return (
@@ -87,25 +158,22 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
           </header>
 
           <section className="modal-card-body">
+            {error && (
+              <div className="notification is-focatoin is-danger is-light">
+                <button
+                  className="delete"
+                  onClick={() => setError('')}
+                ></button>
+                {error}
+              </div>
+            )}
+
             <form
               id="adoption-form"
               onSubmit={handleSubmit}
             >
-              <div className="field">
-                <label className="label">Application Date</label>
-
-                <div className="control">
-                  <input
-                    className="input"
-                    type="date"
-                    name="applicationDate"
-                    value={formData.applicationDate}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-
               <h2 className="title is-5 mt-5">❤️ Adopter Information</h2>
+
               <div className="box">
                 <div className="field is-horizontal">
                   <div className="field-body">
@@ -118,19 +186,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
                           className="input"
                           name="petId"
                           value={formData.petId}
-                        />
-                      </div>
-                    </div>
-
-                    <div
-                      className="field"
-                      style={{ display: 'none' }}
-                    >
-                      <div className="control">
-                        <input
-                          className="input"
-                          name="userId"
-                          value={formData.userId}
+                          readOnly
                         />
                       </div>
                     </div>
@@ -382,8 +438,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
             <button
               className="button is-danger "
               onClick={() => {
-                onClose();
-                setIsModalOpen(false);
+                handleCancelClosing();
               }}
             >
               Cancel

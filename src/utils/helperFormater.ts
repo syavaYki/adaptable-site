@@ -1,8 +1,10 @@
 import { ApiPet } from '../types/Pet';
 
 export function textBeautifier(text: string): string {
+  //repalce all - with space
+  const spacedText = text.replace(/-/g, ' ');
   // 1. Remove all non-alphanumeric characters except spaces.
-  const cleanedText = text.replace(/[^a-zA-Z0-9\s]/g, '');
+  const cleanedText = spacedText.replace(/[^a-zA-Z0-9\s]/g, '');
 
   // 2. Remove unnecessary spaces (leading, trailing, and multiple).
   const trimmedText = cleanedText.trim().replace(/\s+/g, ' ');
@@ -44,3 +46,19 @@ export function petInfoFormater(petInfo: ApiPet) {
 
   return cleanData;
 }
+
+export const formattedDate = (date: string, time: string) => {
+  return new Date(`${date}T${time}`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+export const formattedTime = (date: string, time: string) => {
+  return new Date(`${date}T${time}`).toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  });
+};

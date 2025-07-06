@@ -15,6 +15,8 @@ import { User } from '../../types/User';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { logout } from '../../features/authentication';
+import { AppointmentAccountList } from '../../components/AppointmentAccountList/AppointmentAccountList';
+import { AdoptionAcountList } from '../../components/AdoptionAcountList';
 
 export const AccountPage = () => {
   const [loading, setLoading] = useState(false);
@@ -54,6 +56,8 @@ export const AccountPage = () => {
       .finally(() => {
         setLoading(false);
       });
+
+    setLoading(true);
   }, []);
 
   return (
@@ -124,6 +128,19 @@ export const AccountPage = () => {
                   )}
                 </div>
               </Content>
+            </Box>
+          </Columns.Column>
+
+          <Columns.Column>
+            <Box>
+              <Heading>Your Adoption Application:</Heading>
+              <AdoptionAcountList />
+            </Box>
+
+            <Box>
+              <Heading>Your appointments:</Heading>
+
+              <AppointmentAccountList />
             </Box>
           </Columns.Column>
         </Columns>

@@ -1,7 +1,9 @@
 export interface AppointmentFormData {
+  id?: number;
   name: string;
   email: string;
   phone: string;
   date: string;
-  message?: string;
+  time: string;
+  add_info?: string;
 }

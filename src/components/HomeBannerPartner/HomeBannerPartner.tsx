@@ -1,10 +1,10 @@
 import React from 'react';
 import { Columns, Container, Heading } from 'react-bulma-components';
 import { Link } from 'react-router-dom';
-import bannerImg from '../../assets/how-to-help-banner-sqr.png';
+import bannerImg from '../../assets/partner-with-us-banner-small.png';
 import { VALID_ROUTES } from '../../types/validRoutes';
 
-export const HomeBanner2 = () => {
+export const HomeBannerPartner = () => {
   return (
     <div>
       <Container>
@@ -27,18 +27,19 @@ export const HomeBanner2 = () => {
             className="is-flex is-flex-direction-column is-justify-content-center"
             size={6}
           >
-            <Heading size={2}>How You Can Help</Heading>
+            <Heading size={2}>Partner With Us</Heading>
             <p>
-              There are many ways you can support our mission to find loving
-              homes for pets. From volunteering your time to donating, every
-              little bit helps us care for our animals and find them their
-              forever families.
+              Stronger Together. We partner with fellow shelters and rescues to
+              amplify our impact, creating a powerful network to find loving
+              homes for every animal. Join our life-saving mission and
+              let&apos;s make a bigger difference, together.
             </p>
+
             <Link
-              to={`/${VALID_ROUTES.HOW_TO_HELP}`}
+              to={`/${VALID_ROUTES.PARTNER_WITH_US}`}
               className="button is-primary mt-5"
             >
-              Learn More
+              Partner With Us Today
             </Link>
           </Columns.Column>
         </Columns>

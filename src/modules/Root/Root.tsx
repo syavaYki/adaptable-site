@@ -19,6 +19,7 @@ import { AccountPage } from '../AccountPage';
 import { HowToHelpPage } from '../HowToHelpPage';
 import { ResetPasswordPage } from '../ResetPasswordPage';
 import { UnsubscribePage } from '../UnsubscribePage';
+import { PartnerWithUsPage } from '../PartnerWithUsPage';
 
 export const Root = () => {
   return (
@@ -76,6 +77,11 @@ export const Root = () => {
           <Route
             path={VALID_ROUTES.HOW_TO_HELP}
             element={<HowToHelpPage />}
+          />
+
+          <Route
+            path={VALID_ROUTES.PARTNER_WITH_US}
+            element={<PartnerWithUsPage />}
           />
 
           <Route

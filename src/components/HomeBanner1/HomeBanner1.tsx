@@ -1,8 +1,9 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
 import { Button, Columns, Heading } from 'react-bulma-components';
 import { useNavigate } from 'react-router-dom';
 import style from './HomeBanner1.module.scss';
+import { VALID_ROUTES } from '../../types/validRoutes';
 
 export const HomeBanner1 = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export const HomeBanner1 = () => {
               rounded
               size="large"
               onClick={() => {
-                navigate('/catalog');
+                navigate(`/${VALID_ROUTES.CATALOG}`);
               }}
             >
               Adopt
@@ -40,7 +41,7 @@ export const HomeBanner1 = () => {
               rounded
               size="large"
               onClick={() => {
-                navigate('/donate');
+                navigate(`/${VALID_ROUTES.DONATE}`);
               }}
             >
               Suport the cause

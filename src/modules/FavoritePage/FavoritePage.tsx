@@ -6,6 +6,7 @@ import style from './Favorite.module.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as FavoriteAction from '../../features/favorites';
 import { clearPetFavorites } from '../../api/pets';
+import bannerImg from '../../assets/Favorite-banner.png';
 
 export const FavoritePage = () => {
   const { loggedIn } = useAppSelector(state => state.auth);
@@ -46,7 +47,7 @@ export const FavoritePage = () => {
       ) : (
         <div className={style.imageContainer}>
           <img
-            src="assets\Favorite-banner.png"
+            src={bannerImg}
             alt="No favorite banner"
           />
         </div>

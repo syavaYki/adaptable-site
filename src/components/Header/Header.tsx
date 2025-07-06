@@ -11,6 +11,8 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { actions as menuActions } from '../../features/mobilMenu';
 import { AcountLinkHeader } from '../AcountLinkHeader';
+import { VALID_ROUTES } from '../../types/validRoutes';
+import logo from '../../assets/header-logo.png';
 
 export const Header = () => {
   const { visible: mobileMenuVisible } = useAppSelector(
@@ -60,7 +62,7 @@ export const Header = () => {
           onClick={() => onLinkClick('/')}
         >
           <img
-            src="icons/header-logo.png"
+            src={logo}
             className={style.logo_image}
           />
         </a>
@@ -118,7 +120,9 @@ export const Header = () => {
 
             <Navbar.Dropdown>
               <Navbar.Item
-                onClick={() => onLinkClick('/catalog', 'pet_type', 'cat')}
+                onClick={() =>
+                  onLinkClick(`/${VALID_ROUTES.CATALOG}`, 'pet_type', 'cat')
+                }
               >
                 <Navbar.Link>
                   <Heading size={5}>Cat</Heading>
@@ -126,14 +130,18 @@ export const Header = () => {
               </Navbar.Item>
 
               <Navbar.Item
-                onClick={() => onLinkClick('/catalog', 'pet_type', 'dog')}
+                onClick={() =>
+                  onLinkClick(`/${VALID_ROUTES.CATALOG}`, 'pet_type', 'dog')
+                }
               >
                 <Navbar.Link>
                   <Heading size={5}>Dog</Heading>
                 </Navbar.Link>
               </Navbar.Item>
 
-              <Navbar.Item onClick={() => onLinkClick('/catalog')}>
+              <Navbar.Item
+                onClick={() => onLinkClick(`/${VALID_ROUTES.CATALOG}`)}
+              >
                 <Navbar.Link>
                   <Heading size={5}>All Friends</Heading>
                 </Navbar.Link>
@@ -143,13 +151,25 @@ export const Header = () => {
 
           <Navbar.Item
             className="pr-4"
-            onClick={() => onLinkClick('/how-to-help')}
+            onClick={() => onLinkClick(`/${VALID_ROUTES.HOW_TO_HELP}`)}
           >
             <Navbar.Link
               arrowless
               className="p-0"
             >
               <Heading size={4}>How To Help</Heading>
+            </Navbar.Link>
+          </Navbar.Item>
+
+          <Navbar.Item
+            className="pr-4"
+            onClick={() => onLinkClick(`/${VALID_ROUTES.PARTNER_WITH_US}`)}
+          >
+            <Navbar.Link
+              arrowless
+              className="p-0"
+            >
+              <Heading size={4}>Partner With Us</Heading>
             </Navbar.Link>
           </Navbar.Item>
         </Navbar.Container>
