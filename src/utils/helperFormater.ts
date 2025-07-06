@@ -1,8 +1,10 @@
 import { ApiPet } from '../types/Pet';
 
 export function textBeautifier(text: string): string {
+  //repalce all - with space
+  const spacedText = text.replace(/-/g, ' ');
   // 1. Remove all non-alphanumeric characters except spaces.
-  const cleanedText = text.replace(/[^a-zA-Z0-9\s]/g, '');
+  const cleanedText = spacedText.replace(/[^a-zA-Z0-9\s]/g, '');
 
   // 2. Remove unnecessary spaces (leading, trailing, and multiple).
   const trimmedText = cleanedText.trim().replace(/\s+/g, ' ');

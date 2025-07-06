@@ -8,6 +8,9 @@ import {
   Section,
 } from 'react-bulma-components';
 
+import bannerImg from '../../assets/how-to-help-banner.png';
+import qrCodeImg from '../../assets/donation-qr-code.png';
+
 export const HowToHelpPage = () => {
   return (
     <Section>
@@ -16,7 +19,7 @@ export const HowToHelpPage = () => {
           <Box>
             <figure className="image is-2by1 mb-5">
               <img
-                src="assets\how-to-help-banner.png"
+                src={bannerImg}
                 alt="A banner showing happy pets"
                 style={{ borderRadius: '8px' }}
               />
@@ -75,7 +78,7 @@ export const HowToHelpPage = () => {
                   <div className="is-flex is-justify-content-center">
                     <figure className="image is-128x128  mb-5">
                       <img
-                        src="assets\donation-qr-code.png"
+                        src={qrCodeImg}
                         alt="A banner showing happy pets"
                       />
                     </figure>
