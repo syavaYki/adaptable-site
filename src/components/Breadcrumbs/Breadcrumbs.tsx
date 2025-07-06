@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import style from './Breadcrumbs.module.scss';
 import classNames from 'classnames';
 import { useAppSelector } from '../../app/hooks';
@@ -8,6 +8,8 @@ import { textBeautifier } from '../../utils/helperFormater';
 export const Breadcrumbs = () => {
   const { pets } = useAppSelector(state => state.pet);
   const location = useLocation();
+  const navigate = useNavigate();
+
   let curLocation = '';
   const locationArr = location.pathname
     .split('/')
@@ -23,7 +25,9 @@ export const Breadcrumbs = () => {
       <ul>
         <li>
           <a
-            href="/"
+            onClick={() => {
+              navigate('/');
+            }}
             className={classNames(
               'has-text-primary px-2 mx-2',
               style.crumb,
@@ -36,6 +40,7 @@ export const Breadcrumbs = () => {
 
         {locationArr.map((crumb: string, index: number) => {
           curLocation = curLocation + `/${crumb}`;
+
           const crumbName = crumb;
 
           return (
@@ -46,7 +51,7 @@ export const Breadcrumbs = () => {
               })}
             >
               <a
-                href={curLocation}
+                onClick={() => navigate(curLocation)}
                 className={classNames(
                   'has-text-primary px-2 mx-2',
                   style.crumb,
