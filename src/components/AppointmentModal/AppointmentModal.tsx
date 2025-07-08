@@ -137,6 +137,12 @@ export const AppointmentModal: React.FC<Props> = ({
             <Modal.Card.Title>
               Schedule an Appointment to meet new friend.
             </Modal.Card.Title>
+
+            <button
+              className="delete"
+              aria-label="close"
+              onClick={handleCancelClosing}
+            ></button>
           </Modal.Card.Header>
 
           <Modal.Card.Body>
@@ -263,7 +269,7 @@ export const AppointmentModal: React.FC<Props> = ({
               <div className="control">
                 <button
                   className="button is-primary"
-                  onClick={() => handleCancelClosing()}
+                  onClick={handleCancelClosing}
                 >
                   Cancel
                 </button>
