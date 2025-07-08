@@ -59,7 +59,6 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
   const [formData, setFormData] = useState(initialForm);
 
   useEffect(() => {
-    console.log('ssss');
     setIsModalOpen(isActive);
 
     if (isEdit && curData) {
