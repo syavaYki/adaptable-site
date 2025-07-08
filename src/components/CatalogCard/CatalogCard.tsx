@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { updateFavotitesPetsApi } from '../../api/pets';
 import { textBeautifier } from '../../utils/helperFormater';
+import { VALID_ROUTES } from '../../types/validRoutes';
 
 interface Props {
   petData: Pet;
@@ -76,7 +77,7 @@ export const CatalogCard: React.FC<Props> = ({ petData }) => {
           rounded
           color="primary"
           onClick={() => {
-            naviagate(`/pets/${petData.id}`);
+            naviagate(`/${VALID_ROUTES.CATALOG}/${petData.id}`);
           }}
         >
           More Details

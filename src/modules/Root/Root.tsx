@@ -44,10 +44,17 @@ export const Root = () => {
             }
           />
 
-          <Route
-            path={VALID_ROUTES.CATALOG}
-            element={<CatalogPage />}
-          />
+          <Route path={VALID_ROUTES.CATALOG}>
+            <Route
+              index
+              element={<CatalogPage />}
+            />
+
+            <Route
+              path=":id"
+              element={<PetInfoPage />}
+            />
+          </Route>
 
           <Route
             path={VALID_ROUTES.FAVORITES}
@@ -82,16 +89,6 @@ export const Root = () => {
           <Route
             path={VALID_ROUTES.PARTNER_WITH_US}
             element={<PartnerWithUsPage />}
-          />
-
-          <Route
-            path="/pets/:id"
-            element={<PetInfoPage />}
-          />
-
-          <Route
-            path="/pets/"
-            element={<CatalogPage />}
           />
 
           <Route element={<ProtectedRoute />}>
