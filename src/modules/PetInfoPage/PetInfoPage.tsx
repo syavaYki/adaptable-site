@@ -87,14 +87,16 @@ export const PetInfoPage = () => {
     );
   };
 
+  if (loading) {
+    return <ModalLoader />;
+  }
+
   if (!pet) {
     return <p>Pet not found.</p>;
   }
 
   return (
     <Container>
-      {loading && <ModalLoader />}
-
       <ModalError
         isActive={!!error}
         title="Error"
