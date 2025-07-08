@@ -39,7 +39,6 @@ export const Breadcrumbs = () => {
         </li>
 
         {locationArr.map((crumb: string, index: number) => {
-          const crumbName = crumb;
           const crumbLink = curLocation + `/${crumb}`;
           curLocation = curLocation + `/${crumb}`;
 
