@@ -59,6 +59,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
   const [formData, setFormData] = useState(initialForm);
 
   useEffect(() => {
+    console.log('ssss');
     setIsModalOpen(isActive);
 
     if (isEdit && curData) {
@@ -153,7 +154,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
             <button
               className="delete"
               aria-label="close"
-              onClick={() => setIsModalOpen(false)}
+              onClick={handleCancelClosing}
             ></button>
           </header>
 

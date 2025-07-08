@@ -91,6 +91,7 @@ export const PetInfoPage = () => {
     return <p>Pet not found.</p>;
   }
 
+  console.log(isAppointmentModalOpen);
   return (
     <Container>
       {loading && <ModalLoader />}
