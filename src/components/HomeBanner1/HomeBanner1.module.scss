@@ -6,15 +6,19 @@
   border-radius: 40px;
   background: no-repeat center/cover url('../../../public/assets/bg1.png');
 
-  &__txt_container {
-    width: 50%;
-    height: 90%;
+  &__txt {
+    text-shadow: 0px 1px 9px rgba(0, 0, 0, 1);
 
-    @include mixins.touch {
-      width: 80%;
-    }
-    @include mixins.mobile {
-      width: 100%;
+    &_container {
+      width: 50%;
+      height: 90%;
+
+      @include mixins.touch {
+        width: 80%;
+      }
+      @include mixins.mobile {
+        width: 100%;
+      }
     }
   }
 }

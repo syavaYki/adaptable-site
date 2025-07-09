@@ -1,4 +1,4 @@
-import { AppointmentFormData } from '../types/AppointmentFormData';
+import { AppointmentFormData, AppointmentResponce } from '../types/Appointment';
 import { LocalAccessKeys } from '../types/LocalAccessKeys';
 import { accessLocalStorage } from '../utils/accessLocalStorage';
 import api from './api';
@@ -12,42 +12,43 @@ export const getAllAppointments = () => {
 };
 
 export const submitAppointmentForm = (formData: AppointmentFormData) => {
-  return api.post(
-    `/api/v1/adoption/appointment/`,
-    {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      date: formData.date,
-      time: formData.time,
-      add_info: formData.add_info,
+  const dataSet: Omit<AppointmentResponce, 'id' | 'is_active'> = {
+    user: formData.user,
+    first_name: formData.firstName,
+    last_name: formData.lastName,
+    email: formData.email,
+    phone: formData.phone,
+    date: formData.date,
+    time: formData.time,
+    add_info: formData.add_info,
+  };
+
+  return api.post(`/api/v1/adoption/appointment/`, dataSet, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Token ${accessLocalStorage.get(LocalAccessKeys.LOGGEDIN)?.token}`,
     },
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    },
-  );
+  });
 };
 
 export const editAppointmentForm = (formData: AppointmentFormData) => {
-  return api.put(
-    `/api/v1/adoption/appointment/${formData.id}/`,
-    {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      date: formData.date,
-      time: formData.time,
-      add_info: formData.add_info,
+  const dataSet: Omit<AppointmentResponce, 'id' | 'is_active'> = {
+    user: formData.user,
+    first_name: formData.firstName,
+    last_name: formData.lastName,
+    email: formData.email,
+    phone: formData.phone,
+    date: formData.date,
+    time: formData.time,
+    add_info: formData.add_info,
+  };
+
+  return api.put(`/api/v1/adoption/appointment/${formData.id}/`, dataSet, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Token ${accessLocalStorage.get(LocalAccessKeys.LOGGEDIN)?.token}`,
     },
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Token ${accessLocalStorage.get(LocalAccessKeys.LOGGEDIN)?.token}`,
-      },
-    },
-  );
+  });
 };
 
 export const deleteAppointmentForm = (id: number) => {

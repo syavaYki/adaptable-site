@@ -10,6 +10,9 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { updateFavotitesPetsApi } from '../../api/pets';
 import { textBeautifier } from '../../utils/helperFormater';
+import { VALID_ROUTES } from '../../types/validRoutes';
+import catPlaceholder from '../../assets/cat-img-placeholder.png';
+import dogPlaceholder from '../../assets/dog-img-placeholder.png';
 
 interface Props {
   petData: Pet;
@@ -30,9 +33,9 @@ export const CatalogCard: React.FC<Props> = ({ petData }) => {
   useEffect(() => {
     if (petData.images.length < 1) {
       if (petData.pet_type.toLocaleLowerCase() === 'dog') {
-        setPicture('assets/dog-img-placeholder.png');
+        setPicture(dogPlaceholder);
       } else if (petData.pet_type.toLocaleLowerCase() === 'cat') {
-        setPicture('assets/cat-img-placeholder.png');
+        setPicture(catPlaceholder);
       } else {
         setPicture('https://placehold.co/400x600?text=Comming+Soon');
       }
@@ -76,7 +79,7 @@ export const CatalogCard: React.FC<Props> = ({ petData }) => {
           rounded
           color="primary"
           onClick={() => {
-            naviagate(`/pets/${petData.id}`);
+            naviagate(`/${VALID_ROUTES.CATALOG}/${petData.id}`);
           }}
         >
           More Details

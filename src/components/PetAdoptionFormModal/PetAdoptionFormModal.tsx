@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { AdoptionFormData } from '../../types/AdoptionFormData';
+import { AdoptionFormData } from '../../types/AdoptionForm';
 import { editAdoptionForm, submitAdoptionForm } from '../../api/adoptionForms';
 import { AxiosError } from 'axios';
 
@@ -37,12 +37,14 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
       return curData;
     } else {
       return {
-        petId: petId,
-        firstName: loggedIn?.first_name ? loggedIn.first_name : '',
-        lastName: loggedIn?.last_name ? loggedIn.last_name : '',
+        pet: petId,
+        user: loggedIn.id,
+        applicationDate: getTodayDate(),
+        firstName: loggedIn.first_name,
+        lastName: loggedIn.last_name,
         address: '',
         phone: '',
-        email: loggedIn?.email ? loggedIn.email : '',
+        email: loggedIn.email,
         occupation: '',
         employerName: '',
         employerPhone: '',
@@ -77,6 +79,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (isEdit) {
       handleAdoptionEdit(formData);
       return;
@@ -153,7 +156,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
             <button
               className="delete"
               aria-label="close"
-              onClick={() => setIsModalOpen(false)}
+              onClick={handleCancelClosing}
             ></button>
           </header>
 
@@ -184,8 +187,8 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
                       <div className="control">
                         <input
                           className="input"
-                          name="petId"
-                          value={formData.petId}
+                          name="pet"
+                          value={formData.pet}
                           readOnly
                         />
                       </div>

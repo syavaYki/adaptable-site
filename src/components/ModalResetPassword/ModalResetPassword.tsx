@@ -62,6 +62,7 @@ export const ModalResetPassword: React.FC<Props> = ({
             onClick={() => handleClose()}
           ></button>
         </header>
+
         <section className="modal-card-body py-3 is-multiline">
           <span>{body}</span>
           <div className="field has-addons has-addons-centered mt-4">

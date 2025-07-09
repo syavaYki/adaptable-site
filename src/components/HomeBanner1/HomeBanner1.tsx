@@ -17,7 +17,8 @@ export const HomeBanner1 = () => {
       >
         <Heading
           className={classNames(
-            'is-size-4-mobile is-size-1-desktop is-size-3-touch has-text-weight-extrabold ',
+            'is-size-4-mobile is-size-1-desktop is-size-3-touch has-text-weight-extrabold has-text-white',
+            style.bunnerFirst__txt,
           )}
         >
           Find your new best friend. Give a pet a forever home.
