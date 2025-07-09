@@ -1,6 +1,8 @@
 export interface AdoptionFormData {
-  id?: number;
-  petId: number;
+  id: number;
+  user: number;
+  pet: number;
+  applicationDate: string;
   firstName?: string;
   lastName?: string;
   address?: string;
@@ -16,7 +18,7 @@ export interface AdoptionFormData {
   hoursAlone?: number;
 }
 
-export interface AdoptionFormDataResponse extends AdoptionFormData {
+export interface AdoptionFormDataResponse {
   id: number;
   user: number;
   pet: number;

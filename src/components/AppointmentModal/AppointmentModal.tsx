@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal } from 'react-bulma-components';
-import { AppointmentFormData } from '../../types/AppointmentFormData';
+import { AppointmentFormData } from '../../types/Appointment';
 import {
   editAppointmentForm,
   submitAppointmentForm,
@@ -16,15 +16,6 @@ type Props = {
   curData?: AppointmentFormData;
 };
 
-const initialForm = {
-  name: '',
-  email: '',
-  phone: '',
-  date: '',
-  time: '',
-  add_info: '',
-};
-
 export const AppointmentModal: React.FC<Props> = ({
   isOpen,
   onClose,
@@ -33,6 +24,16 @@ export const AppointmentModal: React.FC<Props> = ({
   isEdit = false,
 }) => {
   const { loggedIn } = useAppSelector(state => state.auth);
+  const initialForm: AppointmentFormData = {
+    user: loggedIn.id,
+    firstName: loggedIn.first_name,
+    lastName: loggedIn.last_name,
+    email: loggedIn.email,
+    phone: '',
+    date: '',
+    time: '',
+    add_info: '',
+  };
   const [formData, setFormData] = useState<AppointmentFormData>(initialForm);
   const [error, setError] = useState('');
 
@@ -52,8 +53,6 @@ export const AppointmentModal: React.FC<Props> = ({
     if (loggedIn) {
       setFormData(prev => ({
         ...prev,
-        email: loggedIn.email,
-        name: loggedIn.first_name + ' ' + loggedIn.last_name,
       }));
     }
   }, [isOpen, curData, isEdit]);
@@ -65,6 +64,7 @@ export const AppointmentModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (isEdit) {
       handleAppointmentEdit(formData);
       return;
@@ -161,17 +161,32 @@ export const AppointmentModal: React.FC<Props> = ({
               id="appointment-form"
             >
               <div className="field">
-                <label className="label">Full Name</label>
+                <label className="label">First Name</label>
                 <div className="control">
                   <input
                     className="input"
                     type="text"
-                    placeholder="Enter your full name"
-                    name="name"
-                    value={formData.name}
+                    placeholder="Enter your first name"
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleChange}
                     required
                     ref={nameInputRef}
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Last Name</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Enter your last name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
               </div>

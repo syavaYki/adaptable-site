@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bulma-components';
-import { AdoptionFormDataResponse } from '../../types/AdoptionFormData';
+import { AdoptionFormDataResponse } from '../../types/AdoptionForm';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 

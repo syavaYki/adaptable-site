@@ -9,7 +9,7 @@ import { AdoptionFormInfo } from '../AdoptionFormInfo';
 import {
   AdoptionFormData,
   AdoptionFormDataResponse,
-} from '../../types/AdoptionFormData';
+} from '../../types/AdoptionForm';
 import {
   deleteAdoptionForm,
   getAllAdoptionForms,

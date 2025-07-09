@@ -1,4 +1,4 @@
-import { AdoptionFormData } from '../types/AdoptionFormData';
+import { AdoptionFormData } from '../types/AdoptionForm';
 import { LocalAccessKeys } from '../types/LocalAccessKeys';
 import { accessLocalStorage } from '../utils/accessLocalStorage';
 import api from './api';

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Appointment } from '../../types/Appointment';
+import { AppointmentResponce } from '../../types/Appointment';
 import { Button } from 'react-bulma-components';
 import { formattedDate, formattedTime } from '../../utils/helperFormater';
 
 type Props = {
-  data: Appointment;
+  data: AppointmentResponce;
   onDelete: (id: number) => void;
   onEdit: (id: number) => void;
 };

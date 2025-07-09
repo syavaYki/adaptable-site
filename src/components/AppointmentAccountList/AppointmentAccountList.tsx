@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Appointment } from '../../types/Appointment';
+import { AppointmentResponce } from '../../types/Appointment';
 import { AppointmentInfo } from '../AppointmentInfo';
 import {
   deleteAppointmentForm,
@@ -21,7 +21,7 @@ export const AppointmentAccountList: React.FC = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [appointments, setAppointments] = useState<AppointmentResponce[]>([]);
   const [isAppointmentModalVisible, setIsAppointmentModalVisible] =
     useState(false);
   const [choiceVisible, setChoiceVisible] = useState(false);
@@ -39,7 +39,9 @@ export const AppointmentAccountList: React.FC = () => {
       .then(res => {
         if (res?.data) {
           setAppointments(
-            res.data.filter((ad: Appointment) => ad.email === loggedIn?.email),
+            res.data.filter(
+              (ad: AppointmentResponce) => ad.email === loggedIn?.email,
+            ),
           );
         }
       })

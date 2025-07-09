@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { AdoptionFormData } from '../../types/AdoptionFormData';
+import { AdoptionFormData } from '../../types/AdoptionForm';
 import { editAdoptionForm, submitAdoptionForm } from '../../api/adoptionForms';
 import { AxiosError } from 'axios';
 
