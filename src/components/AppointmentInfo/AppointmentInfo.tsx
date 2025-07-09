@@ -13,7 +13,8 @@ export const AppointmentInfo: React.FC<Props> = ({
   onDelete,
   onEdit,
 }) => {
-  const { id, name, phone, date, time, add_info, is_active } = data;
+  const { id, first_name, last_name, phone, date, time, add_info, is_active } =
+    data;
 
   return (
     <div className="card">
@@ -33,13 +34,16 @@ export const AppointmentInfo: React.FC<Props> = ({
           <p>
             <strong>Phone:</strong> {phone}
           </p>
+
           <p>
             <strong>Appointment:</strong> {formattedDate(date, time)} at{' '}
             {formattedTime(date, time)}
           </p>
+
           <p>
-            <strong>Name:</strong> {name}
+            <strong>Name:</strong> {first_name + ' ' + last_name}
           </p>
+
           {add_info && (
             <p>
               <strong>Additional Info:</strong> {add_info}

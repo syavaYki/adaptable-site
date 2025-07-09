@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal } from 'react-bulma-components';
-import { AppointmentFormData } from '../../types/Appointment';
+import {
+  AppointmentFormData,
+  AppointmentResponce,
+} from '../../types/Appointment';
 import {
   editAppointmentForm,
   submitAppointmentForm,
@@ -13,7 +16,7 @@ type Props = {
   onClose: () => void;
   onSuccess?: () => void;
   isEdit?: boolean;
-  curData?: AppointmentFormData;
+  curData?: AppointmentResponce;
 };
 
 export const AppointmentModal: React.FC<Props> = ({
@@ -47,7 +50,17 @@ export const AppointmentModal: React.FC<Props> = ({
     }
 
     if (isEdit && curData) {
-      setFormData(curData);
+      setFormData({
+        id: curData.id,
+        firstName: curData.first_name,
+        lastName: curData.last_name,
+        user: curData.user,
+        email: curData.email,
+        phone: curData.phone,
+        date: curData.date,
+        time: curData.time,
+        add_info: curData.add_info,
+      });
     }
 
     if (loggedIn) {

@@ -15,7 +15,7 @@ export const submitAdoptionForm = (formData: AdoptionFormData) => {
   return api.post(
     `/api/v1/adoption/adoption_form/`,
     {
-      pet: formData.petId,
+      pet: formData.pet,
       first_name: formData.firstName,
       last_name: formData.lastName,
       address: formData.address,
@@ -43,7 +43,7 @@ export const editAdoptionForm = (formData: AdoptionFormData) => {
   return api.put(
     `/api/v1/adoption/adoption_form/${formData.id}/`,
     {
-      pet: formData.petId,
+      pet: formData.pet,
       first_name: formData.firstName,
       last_name: formData.lastName,
       address: formData.address,

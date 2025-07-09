@@ -37,12 +37,14 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
       return curData;
     } else {
       return {
-        petId: petId,
-        firstName: loggedIn?.first_name ? loggedIn.first_name : '',
-        lastName: loggedIn?.last_name ? loggedIn.last_name : '',
+        pet: petId,
+        user: loggedIn.id,
+        applicationDate: getTodayDate(),
+        firstName: loggedIn.first_name,
+        lastName: loggedIn.last_name,
         address: '',
         phone: '',
-        email: loggedIn?.email ? loggedIn.email : '',
+        email: loggedIn.email,
         occupation: '',
         employerName: '',
         employerPhone: '',
@@ -77,6 +79,7 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (isEdit) {
       handleAdoptionEdit(formData);
       return;
@@ -184,8 +187,8 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
                       <div className="control">
                         <input
                           className="input"
-                          name="petId"
-                          value={formData.petId}
+                          name="pet"
+                          value={formData.pet}
                           readOnly
                         />
                       </div>

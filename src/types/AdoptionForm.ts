@@ -1,5 +1,5 @@
 export interface AdoptionFormData {
-  id: number;
+  id?: number;
   user: number;
   pet: number;
   applicationDate: string;
