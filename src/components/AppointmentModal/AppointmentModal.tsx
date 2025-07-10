@@ -27,6 +27,7 @@ export const AppointmentModal: React.FC<Props> = ({
   isEdit = false,
 }) => {
   const { loggedIn } = useAppSelector(state => state.auth);
+
   if (!loggedIn) {
     return null;
   }

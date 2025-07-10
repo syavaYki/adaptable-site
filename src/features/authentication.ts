@@ -8,9 +8,9 @@ const initialValue = {
 };
 
 const logout = createAsyncThunk('auth/logout', async () => {
-  const response = await userLogout();
+  await userLogout();
 
-  return response;
+  return null;
 });
 
 const AuthSlice = createSlice({
