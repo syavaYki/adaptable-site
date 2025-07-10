@@ -6,11 +6,11 @@ import { PromoModal } from './PromoModal';
 
 export const OneShotNotification: React.FC = () => {
   const [noticeShow, setNoticeShow] = React.useState(
-    accessLocalStorage.get(LocalAccessKeys.URGENT_NOTICE_SHOW),
+    accessLocalStorage.get(LocalAccessKeys.NOTICE_SHOW),
   );
 
   function handleOnClose() {
-    accessLocalStorage.set(LocalAccessKeys.URGENT_NOTICE_SHOW, false);
+    accessLocalStorage.set(LocalAccessKeys.NOTICE_SHOW, false);
     setNoticeShow(false);
   }
 
