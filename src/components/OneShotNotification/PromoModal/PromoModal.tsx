@@ -87,7 +87,7 @@ export const PromoModal: React.FC<Props> = ({ onClose }) => {
                 )}
                 onClick={e => handleSubmit(e)}
               >
-                Submit
+                Subscribe
               </button>
             </div>
           </div>

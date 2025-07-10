@@ -7,7 +7,6 @@ export enum VALID_ROUTES {
   REGISTER = 'register',
   ACCOUNT = 'account',
   CONTACT_US = 'contact-us',
-  DONATE = 'donate',
   HOW_TO_HELP = 'how-to-help',
   PARTNER_WITH_US = 'partner-with-us',
   UNSUBSCRIBE = 'unsubscribe',
