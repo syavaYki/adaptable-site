@@ -30,9 +30,6 @@ export function SubscribeNews() {
           setShowError(true);
         }
       })
-      .catch(() => {
-        setShowError(true);
-      })
       .finally(() => {
         setLoading(false);
         setEmail('');

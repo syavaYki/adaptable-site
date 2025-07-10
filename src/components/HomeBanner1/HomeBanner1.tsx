@@ -42,7 +42,7 @@ export const HomeBanner1 = () => {
               rounded
               size="large"
               onClick={() => {
-                navigate(`/${VALID_ROUTES.DONATE}`);
+                navigate(`/${VALID_ROUTES.HOW_TO_HELP}`);
               }}
             >
               Suport the cause
