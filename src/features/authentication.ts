@@ -37,6 +37,8 @@ const AuthSlice = createSlice({
       })
 
       .addCase(logout.rejected, (state, action) => {
+        state.loggedIn = undefined;
+        accessLocalStorage.clearKey(LocalAccessKeys.LOGGEDIN);
         console.error(action.error.message || 'Failed to logout.');
       });
   },
