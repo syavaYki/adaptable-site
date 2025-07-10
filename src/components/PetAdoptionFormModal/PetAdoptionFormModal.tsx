@@ -32,6 +32,10 @@ export const PetAdoptionFormModal: React.FC<Props> = ({
   const { loggedIn } = useAppSelector(state => state.auth);
   const [error, setError] = useState('');
 
+  if (!loggedIn) {
+    return null;
+  }
+
   const initialForm: AdoptionFormData = useMemo(() => {
     if (isEdit && curData) {
       return curData;

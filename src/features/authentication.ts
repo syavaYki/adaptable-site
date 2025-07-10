@@ -8,9 +8,9 @@ const initialValue = {
 };
 
 const logout = createAsyncThunk('auth/logout', async () => {
-  const response = await userLogout();
+  await userLogout();
 
-  return response;
+  return null;
 });
 
 const AuthSlice = createSlice({
@@ -37,6 +37,8 @@ const AuthSlice = createSlice({
       })
 
       .addCase(logout.rejected, (state, action) => {
+        state.loggedIn = undefined;
+        accessLocalStorage.clearKey(LocalAccessKeys.LOGGEDIN);
         console.error(action.error.message || 'Failed to logout.');
       });
   },

@@ -85,7 +85,6 @@ export const PetInfoPage = () => {
             pathname: location.pathname,
           },
         },
-        replace: true,
       });
 
       return;
@@ -138,18 +137,22 @@ export const PetInfoPage = () => {
         onClose={() => setSuccess('')}
       />
 
-      <PetAdoptionFormModal
-        petId={pet.id}
-        isActive={isAdoptionFormModalOpen}
-        onClose={() => setIsAdoptionFormModalOpen(false)}
-        onSuccess={handleAdoptionFormSubmitSuccess}
-      />
+      {loggedIn && (
+        <>
+          <PetAdoptionFormModal
+            petId={pet.id}
+            isActive={isAdoptionFormModalOpen}
+            onClose={() => setIsAdoptionFormModalOpen(false)}
+            onSuccess={handleAdoptionFormSubmitSuccess}
+          />
 
-      <AppointmentModal
-        isOpen={isAppointmentModalOpen}
-        onClose={() => setIsAppointmentModalOpen(false)}
-        onSuccess={handleAppointmentSubmitSuccess}
-      />
+          <AppointmentModal
+            isOpen={isAppointmentModalOpen}
+            onClose={() => setIsAppointmentModalOpen(false)}
+            onSuccess={handleAppointmentSubmitSuccess}
+          />
+        </>
+      )}
 
       <div className={style.pageContainer}>
         <Columns>
