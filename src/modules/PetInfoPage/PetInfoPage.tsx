@@ -85,7 +85,6 @@ export const PetInfoPage = () => {
             pathname: location.pathname,
           },
         },
-        replace: true,
       });
 
       return;
