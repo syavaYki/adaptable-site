@@ -1,10 +1,10 @@
 import React from 'react';
-import { AppointmentResponce } from '../../types/Appointment';
+import { Appointment } from '../../types/Appointment';
 import { Button } from 'react-bulma-components';
 import { formattedDate, formattedTime } from '../../utils/helperFormater';
 
 type Props = {
-  data: AppointmentResponce;
+  data: Appointment;
   onDelete: (id: number) => void;
   onEdit: (id: number) => void;
 };
@@ -13,8 +13,7 @@ export const AppointmentInfo: React.FC<Props> = ({
   onDelete,
   onEdit,
 }) => {
-  const { id, first_name, last_name, phone, date, time, add_info, is_active } =
-    data;
+  const { id, name, phone, date, time, add_info, is_active } = data;
 
   return (
     <div className="card">
@@ -34,16 +33,13 @@ export const AppointmentInfo: React.FC<Props> = ({
           <p>
             <strong>Phone:</strong> {phone}
           </p>
-
           <p>
             <strong>Appointment:</strong> {formattedDate(date, time)} at{' '}
             {formattedTime(date, time)}
           </p>
-
           <p>
-            <strong>Name:</strong> {first_name + ' ' + last_name}
+            <strong>Name:</strong> {name}
           </p>
-
           {add_info && (
             <p>
               <strong>Additional Info:</strong> {add_info}

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bulma-components';
-import { AdoptionFormDataResponse } from '../../types/AdoptionForm';
+import { AdoptionFormDataResponse } from '../../types/AdoptionFormData';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
-import { VALID_ROUTES } from '../../types/validRoutes';
 
 type Props = {
   data: AdoptionFormDataResponse;
@@ -49,7 +48,7 @@ export const AdoptionFormInfo: React.FC<Props> = ({
             </p>
             <Button
               size={'small'}
-              onClick={() => navigate(`/${VALID_ROUTES.CATALOG}/${pet}`)}
+              onClick={() => navigate(`/pets/${pet}`)}
             >
               See details
             </Button>

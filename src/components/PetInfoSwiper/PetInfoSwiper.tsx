@@ -7,8 +7,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 import { ModalImage } from '../ModalImage';
-import catPlaceholder from '../../assets/cat-img-placeholder.png';
-import dogPlaceholder from '../../assets/dog-img-placeholder.png';
 
 interface Props {
   images: string[];
@@ -23,9 +21,9 @@ export const PetInfoSwiper: React.FC<Props> = ({ images, petType }) => {
   const imagesToShow = useMemo(() => {
     if (images.length === 0) {
       if (petType === 'dog') {
-        return [dogPlaceholder];
+        return ['assets/dog-img-placeholder.png'];
       } else if (petType === 'cat') {
-        return [catPlaceholder];
+        return ['assets/cat-img-placeholder.png'];
       } else {
         return ['https://placehold.co/400x600?text=Comming+Soon'];
       }

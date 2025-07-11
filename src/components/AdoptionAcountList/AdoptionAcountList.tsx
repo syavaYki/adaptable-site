@@ -9,19 +9,18 @@ import { AdoptionFormInfo } from '../AdoptionFormInfo';
 import {
   AdoptionFormData,
   AdoptionFormDataResponse,
-} from '../../types/AdoptionForm';
+} from '../../types/AdoptionFormData';
 import {
   deleteAdoptionForm,
   getAllAdoptionForms,
 } from '../../api/adoptionForms';
 import { PetAdoptionFormModal } from '../PetAdoptionFormModal';
+import { useAppSelector } from '../../app/hooks';
 
 function parseResponse(data: AdoptionFormDataResponse): AdoptionFormData {
   return {
     id: data.id,
-    pet: data.pet,
-    user: data.user,
-    applicationDate: data.application_date,
+    petId: data.pet,
     firstName: data.first_name,
     lastName: data.last_name,
     address: data.address,
@@ -39,6 +38,7 @@ function parseResponse(data: AdoptionFormDataResponse): AdoptionFormData {
 }
 
 export const AdoptionAcountList = () => {
+  const { loggedIn } = useAppSelector(state => state.auth);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -59,7 +59,11 @@ export const AdoptionAcountList = () => {
     getAllAdoptionForms()
       .then(res => {
         if (res?.data) {
-          setAdoptions(res.data);
+          setAdoptions(
+            res.data.filter(
+              (ad: AdoptionFormDataResponse) => ad.user === loggedIn?.id,
+            ),
+          );
         }
       })
       .catch((e: AxiosError) => {

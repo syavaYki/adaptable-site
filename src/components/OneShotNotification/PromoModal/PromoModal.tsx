@@ -1,35 +1,13 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './PromoModal.module.scss';
-import { subscribeApi } from '../../../api/subscribe';
-import { AxiosError } from 'axios';
 
 type Props = {
   onClose: () => void;
 };
 
 export const PromoModal: React.FC<Props> = ({ onClose }) => {
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-
-    subscribeApi(email)
-      .then()
-      .catch((e: AxiosError) => {
-        const data = e?.response?.data as Record<string, string[]> | undefined;
-        const alreadyExist =
-          data &&
-          Object.values(data)[0][0] === 'This subscription already exists.';
-
-        if (!alreadyExist) {
-          console.error('Something went wrong with new subscription!');
-        }
-      })
-      .finally(() => onClose());
-  };
-
   return (
     <div className={classNames('modal is-active', styles.promotional_modal)}>
       <div
@@ -46,13 +24,13 @@ export const PromoModal: React.FC<Props> = ({ onClose }) => {
         ></button>
         <div className={classNames('box', styles.box)}>
           <h1 className={styles.promotional_modal__title}>
-            Find Your New Best Friend!
+            This is how you save $20.
           </h1>
 
           <p className={styles.promotional_modal__description}>
-            Get the latest news, adoption stories, and new arrivals delivered
-            straight to your inbox. Sign up for the Adaptable newsletter and
-            never miss an update.
+            Sign up for email and save on your first purchase. Plus, get access
+            to exclusive promotions, personalized wine recommendations, and
+            expert advice.
           </p>
 
           <div
@@ -70,12 +48,9 @@ export const PromoModal: React.FC<Props> = ({ onClose }) => {
               )}
             >
               <input
+                className="input is-medium"
                 type="email"
-                className="input"
-                placeholder="your.email@example.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
+                placeholder="Your email address"
               />
             </div>
             <div className="control">
@@ -85,12 +60,30 @@ export const PromoModal: React.FC<Props> = ({ onClose }) => {
                   'is-medium',
                   styles.promotional_modal__submit_button,
                 )}
-                onClick={e => handleSubmit(e)}
               >
-                Subscribe
+                Submit
               </button>
             </div>
           </div>
+
+          <p className={styles.promotional_modal__legaltext}>
+            By hitting submit you agree to receive marketing emails from
+            Wine.com, agree to our{' '}
+            <a
+              href="#"
+              className={styles.promotional_modal__legal_link}
+            >
+              Terms of Service
+            </a>{' '}
+            and certify that you are of legal drinking age. View{' '}
+            <a
+              href="#"
+              className={styles.promotional_modal__legal_link}
+            >
+              Privacy Policy
+            </a>
+            .
+          </p>
         </div>
       </div>
     </div>

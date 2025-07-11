@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppointmentResponce } from '../../types/Appointment';
+import { Appointment } from '../../types/Appointment';
 import { AppointmentInfo } from '../AppointmentInfo';
 import {
   deleteAppointmentForm,
@@ -12,18 +12,21 @@ import { Button, Heading } from 'react-bulma-components';
 import { AppointmentModal } from '../AppointmentModal';
 import { ModalChoice } from '../ModalChoice';
 import { ModalSuccess } from '../ModalSuccess';
+import { useAppSelector } from '../../app/hooks';
 
 export const AppointmentAccountList: React.FC = () => {
+  const { loggedIn } = useAppSelector(state => state.auth);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const [appointments, setAppointments] = useState<AppointmentResponce[]>([]);
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [isAppointmentModalVisible, setIsAppointmentModalVisible] =
     useState(false);
   const [choiceVisible, setChoiceVisible] = useState(false);
-  const [curAppointmentId, setCurAppointmentId] = useState<null | number>(null);
-  const [curEddingtionApt, setCurEditingApt] = useState<boolean>(false);
+  const [curAppointment, setCurAppointment] = useState<null | number>(null);
+  const [curEddingtionApt, setCurEddingtionApt] = useState<boolean>(false);
 
   useEffect(() => {
     fetchAppointments();
@@ -35,12 +38,9 @@ export const AppointmentAccountList: React.FC = () => {
     getAllAppointments()
       .then(res => {
         if (res?.data) {
-          // setAppointments(
-          //   res.data.filter(
-          //     (ad: AppointmentResponce) => ad.email === loggedIn?.email,
-          //   ),
-          // );
-          setAppointments(res.data);
+          setAppointments(
+            res.data.filter((ad: Appointment) => ad.email === loggedIn?.email),
+          );
         }
       })
       .catch((e: AxiosError) => {
@@ -52,17 +52,15 @@ export const AppointmentAccountList: React.FC = () => {
   }
 
   const handleDelete = () => {
-    if (!curAppointmentId) return;
+    if (!curAppointment) return;
 
-    const apptToDel = appointments.find(ap => ap.id === curAppointmentId);
+    const apptToDel = appointments.find(ap => ap.id === curAppointment);
     setLoading(true);
 
     if (apptToDel) {
       deleteAppointmentForm(apptToDel.id)
         .then(() => {
-          setAppointments(prev =>
-            prev.filter(ap => ap.id !== curAppointmentId),
-          );
+          setAppointments(prev => prev.filter(ap => ap.id !== curAppointment));
         })
         .catch(e => {
           setError(`Error deleting appointment: ${e.message}`);
@@ -74,14 +72,14 @@ export const AppointmentAccountList: React.FC = () => {
   };
 
   const handleEdit = (id: number) => {
-    setCurAppointmentId(id);
-    setCurEditingApt(true);
+    setCurAppointment(id);
+    setCurEddingtionApt(true);
     setIsAppointmentModalVisible(true);
   };
 
   const handleAppointmentSubmitSuccess = () => {
     fetchAppointments();
-    setCurEditingApt(false);
+    setCurEddingtionApt(false);
     setSuccess(
       'Appointment request submitted, someone will contact you to confirm appoitment.',
     );
@@ -101,7 +99,7 @@ export const AppointmentAccountList: React.FC = () => {
         onClose={() => setIsAppointmentModalVisible(false)}
         onSuccess={handleAppointmentSubmitSuccess}
         isEdit={curEddingtionApt}
-        curData={appointments.find(ap => ap.id === curAppointmentId)}
+        curData={appointments.find(ap => ap.id === curAppointment)}
       />
 
       {appointments.length === 0 && (
@@ -152,7 +150,7 @@ export const AppointmentAccountList: React.FC = () => {
             key={appointment.id}
             data={appointment}
             onDelete={(id: number) => {
-              setCurAppointmentId(id);
+              setCurAppointment(id);
               setChoiceVisible(true);
             }}
             onEdit={handleEdit}

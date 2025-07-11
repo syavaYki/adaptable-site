@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal } from 'react-bulma-components';
-import {
-  AppointmentFormData,
-  AppointmentResponce,
-} from '../../types/Appointment';
+import { AppointmentFormData } from '../../types/AppointmentFormData';
 import {
   editAppointmentForm,
   submitAppointmentForm,
@@ -16,7 +13,16 @@ type Props = {
   onClose: () => void;
   onSuccess?: () => void;
   isEdit?: boolean;
-  curData?: AppointmentResponce;
+  curData?: AppointmentFormData;
+};
+
+const initialForm = {
+  name: '',
+  email: '',
+  phone: '',
+  date: '',
+  time: '',
+  add_info: '',
 };
 
 export const AppointmentModal: React.FC<Props> = ({
@@ -27,21 +33,6 @@ export const AppointmentModal: React.FC<Props> = ({
   isEdit = false,
 }) => {
   const { loggedIn } = useAppSelector(state => state.auth);
-
-  if (!loggedIn) {
-    return null;
-  }
-
-  const initialForm: AppointmentFormData = {
-    user: loggedIn.id,
-    firstName: loggedIn.first_name,
-    lastName: loggedIn.last_name,
-    email: loggedIn.email,
-    phone: '',
-    date: '',
-    time: '',
-    add_info: '',
-  };
   const [formData, setFormData] = useState<AppointmentFormData>(initialForm);
   const [error, setError] = useState('');
 
@@ -55,22 +46,14 @@ export const AppointmentModal: React.FC<Props> = ({
     }
 
     if (isEdit && curData) {
-      setFormData({
-        id: curData.id,
-        firstName: curData.first_name,
-        lastName: curData.last_name,
-        user: curData.user,
-        email: curData.email,
-        phone: curData.phone,
-        date: curData.date,
-        time: curData.time,
-        add_info: curData.add_info,
-      });
+      setFormData(curData);
     }
 
     if (loggedIn) {
       setFormData(prev => ({
         ...prev,
+        email: loggedIn.email,
+        name: loggedIn.first_name + ' ' + loggedIn.last_name,
       }));
     }
   }, [isOpen, curData, isEdit]);
@@ -82,7 +65,6 @@ export const AppointmentModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (isEdit) {
       handleAppointmentEdit(formData);
       return;
@@ -155,12 +137,6 @@ export const AppointmentModal: React.FC<Props> = ({
             <Modal.Card.Title>
               Schedule an Appointment to meet new friend.
             </Modal.Card.Title>
-
-            <button
-              className="delete"
-              aria-label="close"
-              onClick={handleCancelClosing}
-            ></button>
           </Modal.Card.Header>
 
           <Modal.Card.Body>
@@ -179,32 +155,17 @@ export const AppointmentModal: React.FC<Props> = ({
               id="appointment-form"
             >
               <div className="field">
-                <label className="label">First Name</label>
+                <label className="label">Full Name</label>
                 <div className="control">
                   <input
                     className="input"
                     type="text"
-                    placeholder="Enter your first name"
-                    name="firstName"
-                    value={formData.firstName}
+                    placeholder="Enter your full name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
                     ref={nameInputRef}
-                  />
-                </div>
-              </div>
-
-              <div className="field">
-                <label className="label">Last Name</label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="text"
-                    placeholder="Enter your last name"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    required
                   />
                 </div>
               </div>
@@ -302,7 +263,7 @@ export const AppointmentModal: React.FC<Props> = ({
               <div className="control">
                 <button
                   className="button is-primary"
-                  onClick={handleCancelClosing}
+                  onClick={() => handleCancelClosing()}
                 >
                   Cancel
                 </button>
