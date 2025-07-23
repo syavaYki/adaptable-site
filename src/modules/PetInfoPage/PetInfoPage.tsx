@@ -176,7 +176,13 @@ export const PetInfoPage = () => {
                     size={4}
                     className="is-flex is-flex-direction-column"
                   >
-                    <span className="pb-3">{textBeautifier(pet.breed)}</span>
+                    <span className="pb-1">{textBeautifier(pet.pet_type)}</span>
+
+                    <div className="pb-3">
+                      <span>Breed: </span>
+
+                      <span>{textBeautifier(pet.breed)}</span>
+                    </div>
 
                     <span className={style.sexIndicator}>
                       <p className="p-0 m-0 pr-3">Sex: </p>
