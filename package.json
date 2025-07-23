@@ -1,9 +1,9 @@
 {
-  "homepage": "https://syavayki.github.io/adaptable-site",
-  "name": "adaptable-site",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.12.7",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

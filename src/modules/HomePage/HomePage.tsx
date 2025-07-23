@@ -10,7 +10,6 @@ import { filterPetBy, getRandomSampleFromArray } from '../../utils/helperPet';
 import { HomeBanner2 } from '../../components/HomeBanner2';
 import { getFilterPets } from '../../api/pets';
 import { AxiosError } from 'axios';
-import { HomeBannerPartner } from '../../components/HomeBannerPartner';
 
 export const HomePage = () => {
   const [dogs, setDogs] = useState<Pet[]>([]);
@@ -51,33 +50,29 @@ export const HomePage = () => {
     >
       <OneShotNotification />
 
-      <Section className="p-3">
+      <Section className="p-2">
         <HomeBanner1 />
       </Section>
 
-      <Section className="p-3">
+      <Section className="p-2">
         <CatalogSlider
           title="Our Dogs"
           pets={dogs}
         />
       </Section>
 
-      <Section className="p-3">
+      <Section className="p-2">
         <CatalogSlider
           title="Our Cats"
           pets={cats}
         />
       </Section>
 
-      <Section className="p-3">
+      <Section>
         <HomeBanner2 />
       </Section>
 
-      <Section className="p-3">
-        <HomeBannerPartner />
-      </Section>
-
-      <Section className="p-3">
+      <Section className="p-2">
         <SubscribeNews />
       </Section>
     </Container>

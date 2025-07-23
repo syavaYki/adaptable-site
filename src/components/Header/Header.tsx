@@ -11,8 +11,6 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { actions as menuActions } from '../../features/mobilMenu';
 import { AcountLinkHeader } from '../AcountLinkHeader';
-import { VALID_ROUTES } from '../../types/validRoutes';
-import logo from '../../assets/header-logo.png';
 
 export const Header = () => {
   const { visible: mobileMenuVisible } = useAppSelector(
@@ -62,7 +60,7 @@ export const Header = () => {
           onClick={() => onLinkClick('/')}
         >
           <img
-            src={logo}
+            src="icons/header-logo.png"
             className={style.logo_image}
           />
         </a>
@@ -109,41 +107,35 @@ export const Header = () => {
               arrowless
               className="p-0"
             >
-              <Heading size={5}>Home</Heading>
+              <Heading size={4}>Home</Heading>
             </Navbar.Link>
           </Navbar.Item>
 
           <Navbar.Item hoverable>
             <Navbar.Link onClick={() => onLinkClick('/catalog')}>
-              <Heading size={5}>Find Friend</Heading>
+              <Heading size={4}>Find Friend</Heading>
             </Navbar.Link>
 
             <Navbar.Dropdown>
               <Navbar.Item
-                onClick={() =>
-                  onLinkClick(`/${VALID_ROUTES.CATALOG}`, 'pet_type', 'cat')
-                }
+                onClick={() => onLinkClick('/catalog', 'pet_type', 'cat')}
               >
                 <Navbar.Link>
-                  <Heading size={6}>Cat</Heading>
+                  <Heading size={5}>Cat</Heading>
                 </Navbar.Link>
               </Navbar.Item>
 
               <Navbar.Item
-                onClick={() =>
-                  onLinkClick(`/${VALID_ROUTES.CATALOG}`, 'pet_type', 'dog')
-                }
+                onClick={() => onLinkClick('/catalog', 'pet_type', 'dog')}
               >
                 <Navbar.Link>
-                  <Heading size={6}>Dog</Heading>
+                  <Heading size={5}>Dog</Heading>
                 </Navbar.Link>
               </Navbar.Item>
 
-              <Navbar.Item
-                onClick={() => onLinkClick(`/${VALID_ROUTES.CATALOG}`)}
-              >
+              <Navbar.Item onClick={() => onLinkClick('/catalog')}>
                 <Navbar.Link>
-                  <Heading size={6}>All Friends</Heading>
+                  <Heading size={5}>All Friends</Heading>
                 </Navbar.Link>
               </Navbar.Item>
             </Navbar.Dropdown>
@@ -151,25 +143,13 @@ export const Header = () => {
 
           <Navbar.Item
             className="pr-4"
-            onClick={() => onLinkClick(`/${VALID_ROUTES.HOW_TO_HELP}`)}
+            onClick={() => onLinkClick('/how-to-help')}
           >
             <Navbar.Link
               arrowless
               className="p-0"
             >
-              <Heading size={5}>How To Help</Heading>
-            </Navbar.Link>
-          </Navbar.Item>
-
-          <Navbar.Item
-            className="pr-4"
-            onClick={() => onLinkClick(`/${VALID_ROUTES.PARTNER_WITH_US}`)}
-          >
-            <Navbar.Link
-              arrowless
-              className="p-0"
-            >
-              <Heading size={5}>Partner With Us</Heading>
+              <Heading size={4}>How To Help</Heading>
             </Navbar.Link>
           </Navbar.Item>
         </Navbar.Container>
@@ -213,7 +193,7 @@ export const Header = () => {
               </Navbar.Link>
             ) : (
               <Navbar.Link className="pl-0">
-                <Heading size={5}>Favorite</Heading>
+                <Heading size={4}>Favorite</Heading>
               </Navbar.Link>
             )}
           </Navbar.Item>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  // BrowserRouter as Router,
-  HashRouter as Router,
+  BrowserRouter as Router,
+  // HashRouter as Router,
   Navigate,
   Route,
   Routes,
@@ -19,7 +19,6 @@ import { AccountPage } from '../AccountPage';
 import { HowToHelpPage } from '../HowToHelpPage';
 import { ResetPasswordPage } from '../ResetPasswordPage';
 import { UnsubscribePage } from '../UnsubscribePage';
-import { PartnerWithUsPage } from '../PartnerWithUsPage';
 
 export const Root = () => {
   return (
@@ -44,17 +43,10 @@ export const Root = () => {
             }
           />
 
-          <Route path={VALID_ROUTES.CATALOG}>
-            <Route
-              index
-              element={<CatalogPage />}
-            />
-
-            <Route
-              path=":id"
-              element={<PetInfoPage />}
-            />
-          </Route>
+          <Route
+            path={VALID_ROUTES.CATALOG}
+            element={<CatalogPage />}
+          />
 
           <Route
             path={VALID_ROUTES.FAVORITES}
@@ -87,8 +79,13 @@ export const Root = () => {
           />
 
           <Route
-            path={VALID_ROUTES.PARTNER_WITH_US}
-            element={<PartnerWithUsPage />}
+            path="/pets/:id"
+            element={<PetInfoPage />}
+          />
+
+          <Route
+            path="/pets/"
+            element={<CatalogPage />}
           />
 
           <Route element={<ProtectedRoute />}>

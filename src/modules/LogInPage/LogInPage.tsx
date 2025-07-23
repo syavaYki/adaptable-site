@@ -6,7 +6,7 @@ import {
   Container,
   Heading,
 } from 'react-bulma-components';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { sendRestoreToken, userLogin } from '../../api/auth';
 import { AxiosError, AxiosResponse } from 'axios';
 import { ModalLoader } from '../../components/ModalLoader';
@@ -22,10 +22,6 @@ import { ModalSuccess } from '../../components/ModalSuccess';
 
 export const LogInPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const from = location.state?.from?.pathname || '/account';
-
   const dispatch = useDispatch();
   const { favorites } = useAppSelector(state => state.favorite);
   const [email, setEmail] = useState('');
@@ -63,7 +59,8 @@ export const LogInPage = () => {
 
             dispatch(FavotiteAcion.set(combFavs));
           }
-          navigate(from, { replace: true });
+
+          navigate('/account');
         } else {
           throw Error('Errow with login');
         }

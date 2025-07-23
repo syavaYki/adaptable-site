@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import style from './Breadcrumbs.module.scss';
 import classNames from 'classnames';
 import { useAppSelector } from '../../app/hooks';
@@ -8,8 +8,6 @@ import { textBeautifier } from '../../utils/helperFormater';
 export const Breadcrumbs = () => {
   const { pets } = useAppSelector(state => state.pet);
   const location = useLocation();
-  const navigate = useNavigate();
-
   let curLocation = '';
   const locationArr = location.pathname
     .split('/')
@@ -25,9 +23,7 @@ export const Breadcrumbs = () => {
       <ul>
         <li>
           <a
-            onClick={() => {
-              navigate('/');
-            }}
+            href="/"
             className={classNames(
               'has-text-primary px-2 mx-2',
               style.crumb,
@@ -39,8 +35,8 @@ export const Breadcrumbs = () => {
         </li>
 
         {locationArr.map((crumb: string, index: number) => {
-          const crumbLink = curLocation + `/${crumb}`;
           curLocation = curLocation + `/${crumb}`;
+          const crumbName = crumb;
 
           return (
             <li
@@ -50,22 +46,20 @@ export const Breadcrumbs = () => {
               })}
             >
               <a
-                onClick={() => {
-                  navigate(crumbLink);
-                }}
+                href={curLocation}
                 className={classNames(
                   'has-text-primary px-2 mx-2',
                   style.crumb,
                   style.custom_hover,
                 )}
               >
-                {locationArr[locationArr.length - 2] === 'pets' &&
+                {locationArr[locationArr.length - 2] === 'Pets' &&
                 locationArr.length - 1 === index
                   ? textBeautifier(
-                      pets.find(pet => pet.id === parseInt(crumb))?.name ||
-                        'Pets',
-                    ) || crumb
-                  : textBeautifier(crumb)}
+                      pets.find(pet => pet.id === parseInt(crumbName))?.name ||
+                        'Pet',
+                    ) || crumbName
+                  : textBeautifier(crumbName)}
               </a>
             </li>
           );
