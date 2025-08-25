@@ -1,0 +1,55 @@
+# Name of your workflow
+name: Build and Push to Deploy Branch
+
+# This action will trigger on every push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+# Grant permissions for the GITHUB_TOKEN to push to the repository
+permissions:
+  contents: write
+
+# Jobs to be executed
+jobs:
+  build-and-deploy:
+    # Use the latest version of Ubuntu to run the job
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out your repository code from the 'main' branch
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      # Based on your package.json, you can use a recent version of Node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Build the project
+      # This runs the 'build' script from your package.json
+      - name: Build Project
+        run: npm run build
+
+      # Step 5: Deploy the build folder to the 'deploy' branch
+      # This action takes the contents of the 'dist' folder and pushes it
+      # to the 'deploy' branch, overwriting its history.
+      - name: Deploy to Deploy Branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # The default GITHUB_TOKEN is used automatically
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # The branch to deploy the build artifacts to
+          publish_branch: deploy
+          # The folder that contains your Parcel build artifacts
+          publish_dir: ./dist
+          # Add a custom commit message
+          commit_message: 'Deploying build from ${{ github.sha }}'
