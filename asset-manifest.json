@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/adaptable-site/static/css/main.82d05aef.css",
-    "main.js": "/adaptable-site/static/js/main.21e687f9.js",
-    "static/media/how-to-help-banner-sqr.png": "/adaptable-site/static/media/how-to-help-banner-sqr.212880f4cfd71af07e0b.png",
-    "static/media/bg1.png": "/adaptable-site/static/media/bg1.66a4f11f94831f768160.png",
-    "static/media/how-to-help-banner.png": "/adaptable-site/static/media/how-to-help-banner.b9019113998736d79157.png",
-    "static/media/Favorite-banner.png": "/adaptable-site/static/media/Favorite-banner.719a43167a53d0b1e476.png",
-    "static/media/dog-img-placeholder.png": "/adaptable-site/static/media/dog-img-placeholder.74aed6f1740d26c584eb.png",
-    "static/media/partner-with-us-banner-main.png": "/adaptable-site/static/media/partner-with-us-banner-main.6a005288918ef5a82abc.png",
-    "static/media/partner-with-us-banner-small.png": "/adaptable-site/static/media/partner-with-us-banner-small.f11b2279c5d3d0e0f81f.png",
-    "static/media/cat-img-placeholder.png": "/adaptable-site/static/media/cat-img-placeholder.ca2b5b34be1c1b23834a.png",
-    "static/media/donation-qr-code.png": "/adaptable-site/static/media/donation-qr-code.928c1ff7e88b0a168608.png",
-    "static/media/header-logo.png": "/adaptable-site/static/media/header-logo.44e7728a616bed8d6fb1.png",
-    "index.html": "/adaptable-site/index.html",
-    "main.82d05aef.css.map": "/adaptable-site/static/css/main.82d05aef.css.map",
-    "main.21e687f9.js.map": "/adaptable-site/static/js/main.21e687f9.js.map"
+    "main.css": "/static/css/main.c5710257.css",
+    "main.js": "/static/js/main.292eeb0f.js",
+    "static/media/how-to-help-banner-sqr.png": "/static/media/how-to-help-banner-sqr.212880f4cfd71af07e0b.png",
+    "static/media/bg1.png": "/static/media/bg1.66a4f11f94831f768160.png",
+    "static/media/how-to-help-banner.png": "/static/media/how-to-help-banner.b9019113998736d79157.png",
+    "static/media/Favorite-banner.png": "/static/media/Favorite-banner.719a43167a53d0b1e476.png",
+    "static/media/dog-img-placeholder.png": "/static/media/dog-img-placeholder.74aed6f1740d26c584eb.png",
+    "static/media/partner-with-us-banner-main.png": "/static/media/partner-with-us-banner-main.6a005288918ef5a82abc.png",
+    "static/media/partner-with-us-banner-small.png": "/static/media/partner-with-us-banner-small.f11b2279c5d3d0e0f81f.png",
+    "static/media/cat-img-placeholder.png": "/static/media/cat-img-placeholder.ca2b5b34be1c1b23834a.png",
+    "static/media/donation-qr-code.png": "/static/media/donation-qr-code.928c1ff7e88b0a168608.png",
+    "static/media/header-logo.png": "/static/media/header-logo.44e7728a616bed8d6fb1.png",
+    "index.html": "/index.html",
+    "main.c5710257.css.map": "/static/css/main.c5710257.css.map",
+    "main.292eeb0f.js.map": "/static/js/main.292eeb0f.js.map"
   },
   "entrypoints": [
-    "static/css/main.82d05aef.css",
-    "static/js/main.21e687f9.js"
+    "static/css/main.c5710257.css",
+    "static/js/main.292eeb0f.js"
   ]
 }
