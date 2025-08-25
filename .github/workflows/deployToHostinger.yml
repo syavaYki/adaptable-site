@@ -1,4 +1,4 @@
-name: Build and Push to Deploy Branch
+name: Build and Push to Deploy Branch to Hostinger
 
 on:
   push:
