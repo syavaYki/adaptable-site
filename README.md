@@ -1,8 +1,11 @@
 # 🐾 Adaptable - Full-Stack Animal Shelter Platform
 
-Checkout [Live Demo](https://syavayki.github.io/adaptable-site/)
+Checkout [Live Demo](https://adaptable.podolskiy.dev/)
+Project Link: [GitHub](https://github.com/syavaYki/adaptable-site)
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+## 📸 Screenshot
+
+![Screenshot of the application](/public/assets/adaptable-screenshot.png)
 
 ## About The Project
 
